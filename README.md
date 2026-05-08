@@ -4,10 +4,17 @@
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://python.org)
 [![Code Style](https://img.shields.io/badge/code%20style-black-black.svg)](https://github.com/ambv/black)
 [![Type Checked](https://img.shields.io/badge/type%20checked-mypy-blue.svg)](http://mypy-lang.org/)
+[![CI/CD](https://github.com/Crynge/causal-mmm-mta-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/Crynge/causal-mmm-mta-platform/actions)
+[![Coverage](https://codecov.io/gh/Crynge/causal-mmm-mta-platform/branch/main/graph/badge.svg)](https://codecov.io/gh/Crynge/causal-mmm-mta-platform)
+[![Downloads](https://pepy.tech/badge/causal-mmm-mta)](https://pepy.tech/project/causal-mmm-mta)
+[![Stars](https://img.shields.io/github/stars/Crynge/causal-mmm-mta-platform.svg?style=social&label=Star)](https://github.com/Crynge/causal-mmm-mta-platform)
 
 ## 🚀 Bayesian Marketing Mix Modeling + Multi-Touch Attribution with Causal Inference
 
-Enterprise-grade marketing measurement platform combining hierarchical Bayesian MMM, multi-touch attribution, causal graph discovery, and incrementality testing. Built for organizations spending $10M+ annually on marketing who need a single source of truth for ROI measurement and budget optimization.
+**Enterprise-grade marketing measurement platform** combining hierarchical Bayesian MMM, multi-touch attribution (MTA), causal graph discovery, and incrementality testing. Built for organizations spending **$10M+ annually** on marketing who need a **single source of truth** for ROI measurement, budget optimization, and causal impact analysis.
+
+### 🔑 Keywords for Discovery
+Marketing Mix Modeling (MMM), Multi-Touch Attribution (MTA), Bayesian Statistics, Causal Inference, Marketing Analytics, ROI Measurement, Budget Optimization, Incrementality Testing, Media Mix Analysis, Attribution Modeling, Marketing Science, Data Science, Machine Learning, Econometrics, Marketing Technology (MarTech), Ad Tech, Performance Marketing, Digital Marketing Analytics, Customer Journey Analysis, Marketing ROI, ROAS Optimization, Media Planning, Marketing Measurement, Causal DAG, Double Machine Learning, Synthetic Control, Geo Experiments, Shapley Values, Markov Chains, Hierarchical Bayesian Models, PyMC, Stan, Time Series Analysis, Adstock Modeling, Saturation Curves, Carryover Effects, Marketing Attribution, Cross-Channel Attribution, Unified Marketing Measurement
 
 ## 📋 Table of Contents
 
