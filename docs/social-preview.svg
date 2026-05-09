@@ -1,0 +1,18 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="640" fill="#06111B"/>
+  <rect x="48" y="48" width="1184" height="544" rx="28" fill="#0D1B2A" stroke="#1F3145"/>
+  <rect x="88" y="92" width="420" height="36" rx="18" fill="#123357"/>
+  <text x="112" y="117" fill="#93C5FD" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600">Unified Marketing Measurement Research Stack</text>
+  <text x="88" y="200" fill="white" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">Causal MMM + MTA Platform</text>
+  <text x="88" y="252" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="26">Bayesian MMM, Markov + Shapley attribution, and causal discovery.</text>
+  <text x="88" y="306" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="22">Built for serious marketing analytics teams working on ROI, incrementality,</text>
+  <text x="88" y="340" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="22">budget optimization, and measurement reconciliation.</text>
+  <rect x="88" y="410" width="236" height="64" rx="18" fill="#2563EB"/>
+  <text x="118" y="451" fill="white" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Crynge / Sameer</text>
+  <rect x="708" y="126" width="440" height="354" rx="24" fill="#07111F" stroke="#1D4ED8"/>
+  <text x="742" y="184" fill="#93C5FD" font-family="Consolas, monospace" font-size="22">Core modules</text>
+  <text x="742" y="238" fill="white" font-family="Consolas, monospace" font-size="22">MMM           Bayesian media response modeling</text>
+  <text x="742" y="286" fill="white" font-family="Consolas, monospace" font-size="22">MTA           Markov + Shapley attribution</text>
+  <text x="742" y="334" fill="white" font-family="Consolas, monospace" font-size="22">Causal Graph  PC / FCI / DML-oriented tooling</text>
+  <text x="742" y="402" fill="#86EFAC" font-family="Consolas, monospace" font-size="22">Lightweight CI + optional heavy research dependencies</text>
+</svg>

@@ -15,13 +15,37 @@ from typing import Dict, List, Optional, Tuple, Set, Any, Union
 from dataclasses import dataclass, field
 import networkx as nx
 from networkx.algorithms.dag import is_directed_acyclic_graph
-from dowhy import CausalModel
-from econml.dml import DMLCateEstimator
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.linear_model import LinearRegression, LogisticRegression
 import warnings
 
+try:
+    from dowhy import CausalModel
+except ImportError:  # pragma: no cover - depends on local environment
+    CausalModel = None
+
+try:
+    from econml.dml import DMLCateEstimator
+except ImportError:  # pragma: no cover - depends on local environment
+    DMLCateEstimator = None
+
 warnings.filterwarnings('ignore')
+
+
+def _require_causal_effect_dependencies() -> None:
+    if CausalModel is None:
+        raise ImportError(
+            "Missing optional causal inference dependency 'dowhy'. "
+            "Install the full research stack from requirements.txt to estimate causal effects."
+        )
+
+
+def _require_dml_dependencies() -> None:
+    if DMLCateEstimator is None:
+        raise ImportError(
+            "Missing optional causal inference dependency 'econml'. "
+            "Install the full research stack from requirements.txt to run Double Machine Learning."
+        )
 
 
 @dataclass
@@ -419,6 +443,8 @@ class CausalGraphDiscovery:
         
         if graph is None:
             raise ValueError("No graph available. Run discover() first.")
+
+        _require_causal_effect_dependencies()
         
         # Convert NetworkX graph to DOT format for DoWhy
         graph_str = nx.nx_pydot.to_pydot(graph).to_string()
@@ -540,6 +566,8 @@ class DoubleMachineLearning:
         """
         if W is None:
             W = X
+
+        _require_dml_dependencies()
         
         # Use EconML's DML implementation
         self.estimator = DMLCateEstimator(

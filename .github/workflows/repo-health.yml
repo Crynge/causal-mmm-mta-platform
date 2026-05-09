@@ -1,0 +1,21 @@
+name: Repo Health
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  repo-health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify community files
+        run: |
+          test -f README.md
+          test -f LICENSE
+          test -f CONTRIBUTING.md
+          test -f SECURITY.md
+          test -f AUTHORS.md
+          test -f .github/CODEOWNERS

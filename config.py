@@ -28,15 +28,11 @@ class DatabaseConfig:
 @dataclass(frozen=True)
 class OpenAIConfig:
     """OpenAI API configuration."""
-    api_key: str = field(default_factory=lambda: os.getenv("OPENAI_API_KEY", ""))
+    api_key: Optional[str] = field(default_factory=lambda: os.getenv("OPENAI_API_KEY"))
     base_url: str = field(default_factory=lambda: os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"))
     model: str = field(default_factory=lambda: os.getenv("OPENAI_MODEL", "gpt-4-turbo-preview"))
     timeout: int = 30
     max_retries: int = 3
-    
-    def __post_init__(self):
-        if not self.api_key:
-            raise ValueError("OPENAI_API_KEY must be set in environment or .env file")
 
 
 @dataclass(frozen=True)
@@ -163,18 +159,7 @@ class Config:
     def validate(self) -> List[str]:
         """Validate configuration and return list of errors."""
         errors = []
-        
-        # Validate OpenAI config
-        try:
-            object.__getattribute__(self, 'openai')
-        except ValueError as e:
-            errors.append(str(e))
-        
-        # Validate database path
-        db_path = Path(self.database.delta_lake_path)
-        if not db_path.parent.exists():
-            errors.append(f"Delta Lake parent directory does not exist: {db_path.parent}")
-        
+
         # Validate Bayesian parameters
         if self.bayesian.num_samples <= 0:
             errors.append("num_samples must be positive")

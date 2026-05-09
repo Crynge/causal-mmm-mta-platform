@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 Hierarchical Bayesian Marketing Mix Model (MMM)
 
@@ -15,13 +17,36 @@ import pandas as pd
 from typing import Dict, List, Optional, Tuple, Any, Union
 from dataclasses import dataclass
 from pathlib import Path
-import arviz as az
-import pymc as pm
 from scipy.special import expit
 from loguru import logger
 import warnings
 
+try:
+    import arviz as az
+except ImportError:  # pragma: no cover - depends on local environment
+    az = None
+
+try:
+    import pymc as pm
+except ImportError:  # pragma: no cover - depends on local environment
+    pm = None
+
 warnings.filterwarnings('ignore')
+
+
+def _require_bayesian_dependencies() -> None:
+    """Raise a clear error when optional MMM dependencies are unavailable."""
+    missing = []
+    if pm is None:
+        missing.append("pymc")
+    if az is None:
+        missing.append("arviz")
+    if missing:
+        packages = ", ".join(missing)
+        raise ImportError(
+            f"Missing optional Bayesian MMM dependencies: {packages}. "
+            "Install the full research stack from requirements.txt to fit or inspect MMM models."
+        )
 
 
 @dataclass
@@ -270,6 +295,7 @@ class HierarchicalBayesianMMM:
         dates : pd.DatetimeIndex, optional
             Date index for seasonal features
         """
+        _require_bayesian_dependencies()
         n_obs = len(target)
         channels = media_data.columns.tolist()
         n_channels = len(channels)
@@ -420,6 +446,7 @@ class HierarchicalBayesianMMM:
         random_seed : int
             Random seed for reproducibility
         """
+        _require_bayesian_dependencies()
         logger.info(f"Fitting MMM model with {draws} draws, {chains} chains")
         
         # Build model
@@ -555,6 +582,7 @@ class HierarchicalBayesianMMM:
     
     def plot_trace(self, var_names: Optional[List[str]] = None):
         """Plot MCMC trace diagnostics."""
+        _require_bayesian_dependencies()
         if self.trace is None:
             raise ValueError("Model must be fitted first")
         
@@ -562,6 +590,7 @@ class HierarchicalBayesianMMM:
     
     def plot_posterior(self, var_names: Optional[List[str]] = None):
         """Plot posterior distributions."""
+        _require_bayesian_dependencies()
         if self.trace is None:
             raise ValueError("Model must be fitted first")
         
